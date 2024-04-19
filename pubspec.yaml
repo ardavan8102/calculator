@@ -1,5 +1,5 @@
 name: calculator
-description: "A new Flutter project."
+description: "Calculator Application with Flutter"
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,6 +9,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # Icons
+  iconsax: ^0.0.8
+
+  # Utilities
+  url_launcher: ^6.1.12
+  intl: ^0.18.1
+
+  # State Management
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +27,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+
+  # - - - - - -  LOCAL ASSETS - - - - - - #
+  # assets:
+  #   - assets/logos/
+  
+  # - - - - - -  LOCAL FONTS - - - - - - #
+  fonts:
+    - family: reem
+      fonts:
+        - asset: assets/fonts/Reem.ttf
+          weight: 500
