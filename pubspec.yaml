@@ -16,6 +16,7 @@ dependencies:
   # Utilities
   url_launcher: ^6.1.12
   intl: ^0.18.1
+  math_expressions: ^2.5.0
 
   # State Management
   get: ^4.6.5
