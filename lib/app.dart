@@ -1,9 +1,7 @@
 import 'package:calculator/utils/constants/colors.dart';
 import 'package:calculator/widgets/buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:calculator/theme/theme.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -11,12 +9,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: myAppTheme.lightTheme,
-      themeMode: ThemeMode.system,
-      darkTheme: myAppTheme.darkTheme,
-      home: const HomeScreenPage(),
+      home: HomeScreenPage(),
     );
   }
 }
@@ -29,6 +24,9 @@ class HomeScreenPage extends StatefulWidget {
 }
 
 class _HomeScreenPageState extends State<HomeScreenPage> {
+
+  var userQuestion = '';
+  var userAnswer = '';
 
   final List<String> buttons = [
     'C', 'DEL', '/', '%',
@@ -46,7 +44,16 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
       body: Column(
         children: [
           Expanded(
-            child: Container(),
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(userQuestion, style: Theme.of(context).textTheme.headlineLarge!.apply(color: AppColors.white)),
+                  Text(userAnswer, style: Theme.of(context).textTheme.headlineLarge!.apply(color: AppColors.white)),
+                ],
+              ),
+            ),
           ),
           Expanded(
             flex: 2,
@@ -60,18 +67,35 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                       buttonText: buttons[index],
                       color: AppColors.clearButtonBackGround,
                       textColor: AppColors.white,
+                      buttonTapped: () {
+                        setState(() {
+                          userQuestion = '';
+                        });
+                      },
                     );
                   } else if (index == 1) {
                     return MyButton(
                       buttonText: buttons[index],
                       color: AppColors.deleteButtonBackGround,
                       textColor: AppColors.white,
+                      buttonTapped: () {
+                        setState(() {
+                          if (userQuestion != '') {
+                            userQuestion = userQuestion.substring(0, userQuestion.length - 1);
+                          }
+                        });
+                      },
                     );
                   } else {
                     return MyButton(
                       buttonText: buttons[index],
                       color: isOperator(buttons[index]) ? AppColors.operatorButtonBackGround : AppColors.numberButtonBackGround,
                       textColor: AppColors.white,
+                      buttonTapped: () {
+                        setState(() {
+                          userQuestion += buttons[index];
+                        });
+                      },
                     );
                   }
                 },
