@@ -9,11 +9,11 @@ class AppColors {
   static const Color accent = Color(0xFFB784B7);
 
   // Background Colors
-  static const Color lightScreenBackGround = Color.fromARGB(255, 235, 231, 255);
-  static const Color darkScreenBackGround = Color.fromARGB(255, 81, 66, 103);
-
-  static const Color darkButtonBackGround = Color.fromARGB(255, 187, 178, 255);
-  static const Color lightButtonBackGround = Color.fromARGB(255, 206, 183, 253);
+  static Color screenBackGround = Colors.deepPurple.shade100;
+  static Color operatorButtonBackGround = Colors.deepPurple;
+  static Color numberButtonBackGround = Colors.deepPurple.shade300;
+  static Color deleteButtonBackGround = Colors.red.shade400;
+  static Color clearButtonBackGround = Colors.green.shade400;
 
 
   // Casual Colors
